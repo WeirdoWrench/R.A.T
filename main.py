@@ -74,19 +74,6 @@ def Research():
             elif percent > 40:
                 print("Don't worry, it will survive. " + time_left)
     
-        elif "shell" in rat:
-            while True:
-
-                shell_cmt =input("CMD>:").lower()
-                shell_cmt = shell_cmt.replace("CMD>:","")
-                os.system(shell_cmt)
-                if "exit" in shell_cmt:
-                    print("Type exit() to exit...")
-                elif "help" in shell_cmt:
-                    print("Type exit() to exit...")
-                elif "exit()" in shell_cmt:
-                    break
-        
         elif "exit" in rat:
             break
 
