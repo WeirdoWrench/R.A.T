@@ -28,7 +28,7 @@ def Research():
 
     while True:
         rat=input( "|R.A.T|:").lower()
-        if rat == "Help":
+        if  "help" in rat:
             print("\u0332".join("commands:")+"\n"+"\n")
             print('             General_commands:\n')
             print("whoami               #Tells about R.A.T")
@@ -40,10 +40,10 @@ def Research():
             print("Use (category n.o)   #selectes the category")
             print("\n")
 
-        elif rat =="whoami" :
+        elif "whoami" in rat :
             print("R.A.T is the abstract of Research Assistance ,a member of ENIGMA. It is bulited by Giridhera Ramanan to ease up the research work.")
 
-        elif rat == "wiki" :
+        elif "wiki" in rat :
             while True:
                 try:
                     typo=input(Fore.LIGHTRED_EX + Style.BRIGHT+  "What to do you want to search:")
@@ -61,8 +61,8 @@ def Research():
                         rat=rat
                         results=wikipedia.summary(typo,sentences=8)
                         print(Fore.LIGHTWHITE_EX+results)
-                        link = input("For more details(Y/n):")
-                        if link == "y"or"Y":
+                        link = input("For more details(Y/n):").lower()
+                        if "y" in link:
                             click.launch("https://en.wikipedia.org/wiki/"+ typo)
                         else:
                             break
@@ -75,11 +75,11 @@ def Research():
                     else:
                             break   
 
-        elif rat == "time" :
+        elif 'time' in rat :
             strTime = datetime.datetime.now().strftime("%H:%M")
             print(f"The time is {strTime}")
 
-        elif rat == "energy" :
+        elif "energy" in rat :
             battery = psutil.sensors_battery()
             plugged = battery.power_plugged
             percent = int(battery.percent)
@@ -90,7 +90,7 @@ def Research():
             elif percent > 40:
                 print("Don't worry, it will survive. " + time_left)
     
-        elif rat == "shell":
+        elif "shell" in rat:
             while True:
 
                 shell_cmt =input("CMD>:").lower()
@@ -101,7 +101,7 @@ def Research():
                 elif shell_cmt == "exit()" :
                     break
         
-        elif rat == "exit":
+        elif  "exit" in rat:
             break
 
         else:
