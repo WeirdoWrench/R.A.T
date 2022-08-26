@@ -1,5 +1,7 @@
 import datetime
 import os
+import click
+import psutil
 import time
 import wikipedia
 from tkinter.ttk import Style
@@ -26,7 +28,7 @@ def Research():
 
     while True:
         rat=input( "|R.A.T|:")
-        if "Help" in rat or "help" in rat or "?" in rat or "help?" in rat:
+        if rat == "Help":
             print("\u0332".join("commands:")+"\n"+"\n")
             print('             General_commands:\n')
             print("whoami               #Tells about R.A.T")
@@ -38,32 +40,46 @@ def Research():
             print("Use (category n.o)   #selectes the category")
             print("\n")
 
-        elif "whoami" in rat:
+        elif rat =="whoami" :
             print("R.A.T is the abstract of Research Assistance ,a member of ENIGMA. It is bulited by Giridhera Ramanan to ease up the research work.")
 
-        elif "wikipedia" in rat:
+        elif rat == "wiki" :
             while True:
                 try:
                     typo=input(Fore.LIGHTRED_EX + Style.BRIGHT+  "What to do you want to search:")
                     time.sleep(1)
-                    if "exit()" in typo:
+                    if "exit" in typo:
+                        print ("Type \"killwiki\" to exit wiki")
+                    elif "killwiki" in typo:
+                        print("Happy to help!")
                         break
-                    if "clear" in typo:
+                    elif "clear" in typo:
                         os.system("clear")
-                    if "help" in typo:
+                    elif "help" in typo:
                         print("Commands:\nClear\nexit()\nhelp")
                     else:
                         rat=rat
                         results=wikipedia.summary(typo,sentences=8)
                         print(Fore.LIGHTWHITE_EX+results)
-                except:
+                        link = input("For more details(Y/n):")
+                        if link == "y"or"Y":
+                            click.launch("https://en.wikipedia.org/wiki/"+ typo)
+                        else:
+                            break
+                        
+                except not "exit":
                     print("Sorry they may be an error.Error caused may be due to many results. Try to search with more details. ")
+                    ex_link = input("But you can refer the site(Y/n):")
+                    if ex_link == "y"or"Y":
+                            click.launch("https://en.wikipedia.org/wiki/"+ typo)
+                    else:
+                            break   
 
-        elif "time" in rat:
+        elif rat == "time" :
             strTime = datetime.datetime.now().strftime("%H:%M")
             print(f"The time is {strTime}")
 
-        elif "energy" in rat:
+        elif rat == "energy" :
             battery = psutil.sensors_battery()
             plugged = battery.power_plugged
             percent = int(battery.percent)
@@ -74,9 +90,24 @@ def Research():
             elif percent > 40:
                 print("Don't worry, it will survive. " + time_left)
     
-        elif "exit" in rat:
+        elif rat == "shell":
+            while True:
+
+                shell_cmt =input("CMD>:").lower()
+                shell_cmt = shell_cmt.replace("CMD>:","")
+                os.system(shell_cmt)
+                if shell_cmt == "exit" :
+                    print("Type exit() to exit...")
+                elif shell_cmt == "exit()" :
+                    break
+        
+        elif rat == "exit":
             break
 
         else:
             print("Command doesn't exist. Try again. \nTry \"Help\" for General Commands.")
+        
+        
+
+        
 Research()
