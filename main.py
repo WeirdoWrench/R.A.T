@@ -27,7 +27,7 @@ def Research():
     print(Fore.RED+ Style.BRIGHT +"\n\n")
 
     while True:
-        rat=input( "|R.A.T|:")
+        rat=input( "|R.A.T|:").lower()
         if rat == "Help":
             print("\u0332".join("commands:")+"\n"+"\n")
             print('             General_commands:\n')
