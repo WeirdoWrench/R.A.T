@@ -39,6 +39,7 @@ def Calculator():
     # creating object and running it
     calcApp = calculatorApp()
     calcApp.run()
+    Research()
 
 def Sci_Calculator():
     from kivy.core.window import Window
@@ -111,9 +112,9 @@ def Sci_Calculator():
  
     SciCalcApp = Sci_CalculatorApp()
     SciCalcApp.run()
+    Research()
 
-
-
+    
 def Research():
     print(Fore.RED+ Style.BRIGHT + "      ########         ###        ########    ")
     print(Fore.RED+ Style.BRIGHT + "      ##     ##       ## ##          ##       ")
@@ -180,12 +181,12 @@ def Research():
             print("Calculators:\n1. Normal Calculator\n2. Scientific Calculator")
             cal = int(input("Press[1 or 2]:>"))
             if cal == 1:
-                return Calculator()
+                return Calculator()    
             elif cal == 2:
                 return Sci_Calculator()
             else:
                 print("Invalid Command")
-                break
+                
 
         elif rat == "time" :
             strTime = datetime.datetime.now().strftime('%I:%M:%S %p')
