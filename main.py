@@ -68,7 +68,7 @@ def Research():
                             break
                         
                 except not "exit":
-                    print("Sorry there may be an error.Error caused may be due to many results. Try to search with more details. ")
+                    print("Sorry they may be an error.Error caused may be due to many results. Try to search with more details. ")
                     ex_link = input("But you can refer the site(Y/n):")
                     if ex_link == "y"or"Y":
                             click.launch("https://en.wikipedia.org/wiki/"+ typo)
